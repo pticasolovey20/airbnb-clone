@@ -6,6 +6,8 @@ import { BsSquare } from "react-icons/bs";
 import { SlSettings } from "react-icons/sl";
 import { HiOutlinePlus } from "react-icons/hi";
 import { TbMessageCircle2 } from "react-icons/tb";
+import { IoMdClose } from "react-icons/io";
+
 import { IIconSelectProps } from "../../types";
 
 export const IconSelectorComponent: FC<IIconSelectProps> = ({ icon, size }): JSX.Element | null => {
@@ -58,6 +60,14 @@ export const IconSelectorComponent: FC<IIconSelectProps> = ({ icon, size }): JSX
 
 		case "settings":
 			return <SlSettings size={size} />;
+
+		case "square":
+			return <BsSquare size={size} />;
+
+		// action icons
+
+		case "close":
+			return <IoMdClose size={size} />;
 
 		default:
 			return null;

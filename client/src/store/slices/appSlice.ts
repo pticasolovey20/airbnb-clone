@@ -4,12 +4,16 @@ const initialState = {
 	width: window.innerWidth,
 	isMobile: false,
 	isOpen: false,
+	regModal: false,
+	logModal: false,
 } as appState;
 
 interface appState {
 	width: number;
 	isMobile: boolean;
 	isOpen: boolean;
+	regModal: boolean;
+	logModal: boolean;
 }
 
 const appSlice = createSlice({
@@ -25,8 +29,25 @@ const appSlice = createSlice({
 		setIsOpenAction(state, action: PayloadAction<boolean>) {
 			state.isOpen = action.payload;
 		},
+		setRegModalAction(state, action: PayloadAction<boolean>) {
+			state.regModal = action.payload;
+		},
+		setLogModalAction(state, action: PayloadAction<boolean>) {
+			state.logModal = action.payload;
+		},
+		setModalAction(state, action: PayloadAction<boolean>) {
+			state.regModal = action.payload;
+			state.logModal = action.payload;
+		},
 	},
 });
 
-export const { setWidthAction, setIsMobileAction, setIsOpenAction } = appSlice.actions;
+export const {
+	setWidthAction,
+	setIsMobileAction,
+	setIsOpenAction,
+	setRegModalAction,
+	setLogModalAction,
+	setModalAction,
+} = appSlice.actions;
 export default appSlice.reducer;
