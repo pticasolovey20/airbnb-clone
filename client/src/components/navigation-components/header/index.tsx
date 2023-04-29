@@ -1,6 +1,6 @@
 import { FC, useEffect, useRef } from "react";
 import { useAppDispatch, useAppSelector } from "../../../hooks";
-import { setIsOpenAction } from "../../../store/slices/appSlice";
+import { setIsOpenAction, setRegModalAction } from "../../../store/slices/appSlice";
 import { Link } from "react-router-dom";
 import { AnimatePresence, motion } from "framer-motion";
 
@@ -19,6 +19,7 @@ export const HeaderComponent: FC = (): JSX.Element => {
 	const ref = useRef<HTMLButtonElement | null>(null);
 
 	const { width, isMobile, isOpen } = useAppSelector((state) => state.appReducer);
+	const { user } = useAppSelector((state) => state.userReducer);
 	const dispatch = useAppDispatch();
 
 	useEffect(() => {
@@ -36,6 +37,8 @@ export const HeaderComponent: FC = (): JSX.Element => {
 	if (isMobile) {
 		return <BottomMenuComponent />;
 	}
+
+	const onUserClick = () => (!user ? dispatch(setRegModalAction(true)) : console.log("user"));
 
 	return (
 		<header
@@ -79,7 +82,7 @@ export const HeaderComponent: FC = (): JSX.Element => {
 						{!isOpen && (
 							<motion.button
 								className="ml-2 border border-gray-500 rounded-full bg-gray-500 overflow-hidden"
-								onClick={() => {}}
+								onClick={onUserClick}
 								initial={{ scale: 0 }}
 								animate={{ scale: 1 }}
 								exit={{ scale: 0 }}
