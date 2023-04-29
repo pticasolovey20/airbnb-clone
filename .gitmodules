@@ -1,0 +1,7 @@
+[submodule "client"]
+    path = client
+    url = https://github.com/pticasolovey20/airbnb-clone-client.git
+
+[submodule "server"]
+    path = server
+    url = https://github.com/pticasolovey20/airbnb-clone-server.git
