@@ -5,7 +5,10 @@ import { fetchUser } from "./store/slices/userSlice";
 import { Routes, Route } from "react-router-dom";
 import axios from "axios";
 
-import { RootLayoutComponent } from "./components/layout-components";
+import { PrivateRouteComponent, RootLayoutComponent } from "./components/layout-components";
+
+import { AccountSettingsPage } from "./pages/AccountSettingsPage";
+import { PersonalInfoPage } from "./pages/PersonalInfoPage";
 
 axios.defaults.baseURL = "http://localhost:4000";
 axios.defaults.withCredentials = true;
@@ -33,7 +36,12 @@ export const App = () => {
 	return (
 		<div className="min-h-screen text-white bg-primary">
 			<Routes>
-				<Route path="/" element={<RootLayoutComponent />}></Route>
+				<Route path="/" element={<RootLayoutComponent />}>
+					<Route element={<PrivateRouteComponent />}>
+						<Route path="/account-settings" element={<AccountSettingsPage />} />
+						<Route path="/account-settings/personal-info" element={<PersonalInfoPage />} />
+					</Route>
+				</Route>
 			</Routes>
 		</div>
 	);

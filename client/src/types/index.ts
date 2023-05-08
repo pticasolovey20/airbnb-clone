@@ -5,6 +5,7 @@ import { ReactNode } from "react";
 export interface IMarkupProps {
 	children: ReactNode;
 	className?: string;
+	onClick?: () => void;
 }
 
 export interface IButtonProps {
@@ -71,13 +72,28 @@ export interface IHeadingProps {
 
 export interface IMenuItem {
 	id: number;
-	icon: string;
-	route: string;
+	icon?: string;
+	route?: string;
 	label?: string;
+	action?: () => void;
 }
 
 export interface IUserData {
 	email: string;
 	name?: string;
 	password: string;
+}
+
+export interface IFrames {
+	id: number;
+	icon: string;
+	route?: string;
+	headText: string;
+	subText: string;
+}
+
+export interface IFields {
+	headText: string;
+	subText: string;
+	button: string;
 }

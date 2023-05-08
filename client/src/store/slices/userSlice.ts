@@ -26,6 +26,7 @@ export const loginUser = createAsyncThunk(
 	async ({ email, password }: IUserData, { rejectWithValue }) => {
 		try {
 			const { data } = await axios.post("/login", { email, password });
+			toast("Login Successful");
 			return data;
 		} catch (error: any) {
 			if ("message" in error && typeof error.message === "string") {
@@ -52,11 +53,13 @@ export const fetchUser = createAsyncThunk("user/fetchUser", async (_, thunkAPI) 
 const initialState = {
 	user: null,
 	error: "",
+	isLoading: false,
 } as IUserState;
 
 export interface IUserState {
 	user: IUserData | null;
 	error: string;
+	isLoading: boolean;
 }
 
 const userSlice = createSlice({
@@ -84,8 +87,13 @@ const userSlice = createSlice({
 
 		// login
 
+		builder.addCase(loginUser.pending, (state) => {
+			state.isLoading = true;
+		});
+
 		builder.addCase(loginUser.fulfilled, (state, action) => {
 			state.user = action.payload;
+			state.isLoading = false;
 			state.error = "";
 		});
 		builder.addCase(loginUser.rejected, (state, action) => {

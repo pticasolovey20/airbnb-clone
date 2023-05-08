@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../../../hooks";
-import {
-	setLogModalAction,
-	setModalAction,
-	setRegModalAction,
-} from "../../../../store/slices/appSlice";
+import { setLogModalAction, setModalAction, setRegModalAction } from "../../../../store/slices/appSlice";
 import { loginUser } from "../../../../store/slices/userSlice";
 
 import { useForm } from "react-hook-form";
@@ -70,27 +66,17 @@ export const LoginModalComponent = () => {
 	const footerContent = (
 		<div className="flex flex-col gap-4 mt-3">
 			<hr />
-			<ButtonComponent
-				outline
-				label="Continue with Google"
-				icon="google"
-				onClick={() => {}}
-			/>
-			<ButtonComponent
-				outline
-				label="Continue with Github"
-				icon="github"
-				onClick={() => {}}
-			/>
-			<div className="text-neutral-500 text-center font-light mt-4">
-				<p>
+			<ButtonComponent outline label="Continue with Google" icon="google" onClick={() => {}} />
+			<ButtonComponent outline label="Continue with Github" icon="github" onClick={() => {}} />
+			<div className="text-silver-one text-center font-light mt-4">
+				<p className="text-[#AFAFAF]">
 					First time using Airbnb?
 					<span
 						onClick={() => {
 							dispatch(setLogModalAction(false));
 							dispatch(setRegModalAction(true));
 						}}
-						className="text-neutral-800 font-semibold cursor-pointer hover:underline"
+						className="font-semibold cursor-pointer hover:underline text-[#BDBDBD] ml-2"
 					>
 						{" "}
 						Create an account

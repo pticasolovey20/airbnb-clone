@@ -20,7 +20,7 @@ export const ButtonComponent: FC<IModalButtonProps> = ({
 			onClick={onClick}
 			className={classNames(
 				"relative w-full flex items-center justify-center gap-4 transition rounded-lg hover:opacity-80 disabled:opacity-70 disabled:cursor-not-allowed",
-				outline ? "bg-white" : "bg-rose-500",
+				outline ? "bg-white" : "bg-[#FF5A5F]",
 				outline ? "border-black" : "border-rose-500",
 				outline ? "text-black" : "text-white",
 				small ? "text-sm" : "text-md",
