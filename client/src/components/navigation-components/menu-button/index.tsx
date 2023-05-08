@@ -1,44 +1,16 @@
-import { FC, useRef, useEffect } from "react";
-import { useAppDispatch, useAppSelector } from "../../../hooks";
-import { setIsOpenAction } from "../../../store/slices/appSlice";
+import { FC } from "react";
+import { useAppSelector } from "../../../hooks";
 import { motion } from "framer-motion";
 
 const Path = (props: any) => (
-	<motion.path
-		fill="transparent"
-		strokeWidth="2"
-		stroke="white"
-		strokeLinecap="round"
-		{...props}
-	/>
+	<motion.path fill="transparent" strokeWidth="2" stroke="white" strokeLinecap="round" {...props} />
 );
 
 export const MenuButtonComponent: FC = (): JSX.Element => {
-	const ref = useRef<HTMLButtonElement | null>(null);
-
 	const { isOpen } = useAppSelector((state) => state.appReducer);
-	const dispatch = useAppDispatch();
-
-	useEffect(() => {
-		const handleClickOutside = (event: MouseEvent) => {
-			if (ref.current && !(ref.current as Node).contains(event.target as Node)) {
-				dispatch(setIsOpenAction(false));
-			}
-		};
-
-		document.addEventListener("click", handleClickOutside);
-
-		return () => document.removeEventListener("click", handleClickOutside);
-	}, [isOpen]);
 
 	return (
-		<motion.button
-			ref={ref}
-			onClick={() => dispatch(setIsOpenAction(!isOpen))}
-			className="text-white"
-			whileHover={{ scale: 0.85 }}
-			whileTap={{ scale: 0.85 }}
-		>
+		<motion.button className="text-white" whileHover={{ scale: 0.85 }} whileTap={{ scale: 0.85 }}>
 			<svg className="h-6 w-6">
 				<Path
 					variants={{

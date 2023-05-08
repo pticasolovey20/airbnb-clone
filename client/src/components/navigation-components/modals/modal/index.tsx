@@ -56,7 +56,7 @@ export const ModalComponent: FC<IModalProps> = ({
 	}
 
 	return (
-		<div className="text-black fixed flex justify-center items-center outline-none focus:outline-none overflow-x-hidden overflow-y-auto inset-0 z-50 bg-neutral-800/70">
+		<div className="fixed flex justify-center items-center outline-none focus:outline-none overflow-x-hidden overflow-y-auto inset-0 z-50 bg-neutral-800/70">
 			<div className="relative w-[80%] sm:w-[70%] md:w-[50%] lg:w-w-[40%] xl:w-[35%] 2xl:w-[30%] my-6 mx-auto">
 				<div
 					className={classNames(
@@ -65,7 +65,7 @@ export const ModalComponent: FC<IModalProps> = ({
 						showModal ? "opacity-100" : "opacity-0"
 					)}
 				>
-					<div className="relative flex  flex-col w-full h-full lg:h-auto md:h-auto border-0 rounded-lg shadow-lg translate  outline-none focus:outline-none bg-white">
+					<div className="relative flex flex-col w-full h-full lg:h-auto md:h-auto border-0 rounded-lg shadow-lg translate  outline-none focus:outline-none bg-silver-three">
 						<div
 							className="
                             relative flex justify-center items-center p-6 rounded-t border-b-[1px] "
